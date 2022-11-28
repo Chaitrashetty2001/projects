@@ -8,10 +8,8 @@ import com.example.demo.entity.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
-	
-
 	Account findAccountByAccNo(long fromAccNo);
 
-	
+	Account findByAccNo(long fromAccNo);
 
 }

@@ -1,117 +1,47 @@
 package com.example.demo.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-import org.springframework.stereotype.Component;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-
-@Component
+@Setter
+@Getter
 public class Customer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long custid;
-	
-	@Column(nullable = false)
+
+	@NotBlank(message = "First name required")
+	@Size(min = 2, max = 30)
 	private String firstname;
-	
-	@Column(nullable = false)
+
+	@Size(min = 2, max = 30)
 	private String lastname;
-	
-	@Column(nullable = false)
+
+	@Min(value = 18, message = "Age should not be less than 18")
 	private int age;
-	
-	@Column(nullable = false)
+
 	private String gender;
-	
-	@Column(nullable = false)
+
 	private String panNo;
-	
-	@Column(nullable = false)
+
+	@NotEmpty
+	@Email
 	private String email;
-	
-	@Column(nullable = false)
-	private int  phone;
-	
-	@Column(nullable = false)
+
+	private int phone;
+
 	private String city;
-
-	public long getCustid() {
-		return custid;
-	}
-
-	public void setCustid(long custid) {
-		this.custid = custid;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getPanNo() {
-		return panNo;
-	}
-
-	public void setPanNo(String panNo) {
-		this.panNo = panNo;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getPhone() {
-		return phone;
-	}
-
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-	
 
 }
